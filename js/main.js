@@ -9,7 +9,7 @@ window.onload = function() {
         game.load.spritesheet( 'carsprite', 'assets/caryou.png', 594, 400);
 		game.load.image( 'carsprite2', 'assets/carOther.png' );
 		game.load.image( 'carWrecked', 'assets/carOtherWrecked.png');
-		game.load.image( 'bg', 'assets/BG2.png' );
+		game.load.image( 'bg', 'assets/BG.png' );
 		game.load.audio('woof', 'assets/woof.ogg');
 		game.load.audio('meow', 'assets/meow.ogg');
     }
@@ -30,9 +30,11 @@ window.onload = function() {
 	var car5;
 	var carswitch = true;
 	var currentPos;
+	var third = 0;
+	var seventh = 0;
     function create() {
-	game.add.tileSprite(0, 0, 20600, 400, 'bg');
-	 game.world.setBounds(0, 0, 20600, 400);
+	game.add.tileSprite(0, 0, 200600, 400, 'bg');
+	 game.world.setBounds(0, 0, 200600, 400);
         // Create a sprite at the center of the screen using the 'carsprite' image.
         car = game.add.sprite( game.world.centerX - 3000, game.world.centerY, 'carsprite' );
 		car.width = 200;
@@ -89,35 +91,55 @@ window.onload = function() {
     
     function update() {
 		carOn = false;
+		if(car.body.y < 10){
+			car.body.y = 20;
+			}
+		
 		game.camera.x = car.body.x - 150;
-		car2.body.velocity.x = 50;
-		car3.body.velocity.x = 50;
-		car4.body.velocity.x = 50;
-		car5.body.velocity.x = 50;
+		car2.body.velocity.x = 50 * (seventh +1);
+		car3.body.velocity.x = 50 * (seventh +2);
+		car4.body.velocity.x = 50 * (seventh +3);
+		car5.body.velocity.x = 50 * (seventh +4);
 		if (!carswitch){
 			car4.body.velocity.y = -100;
 			}
 		if (car.body.x > car2.body.x + 1500){
 			car2.loadTexture('carsprite2');
 			car2.body.x = car.body.x + 1500;
+			if (seventh == 7){
+				car2.kill();
+				}
 			}
 		if (car.body.x > car3.body.x + 1500){
 		car3.loadTexture('carsprite2');
-			car3.body.x = car.body.x + 1500;
+			car3.body.x = car.body.x + 1500 + ( 75 * seventh +1);;
 			car3.body.velocity.x += 100;
+			if (seventh == 7){
+				car3.kill();
+				}
 			}
 		if (car.body.x > car4.body.x + 1500){
 		car4.loadTexture('carsprite2');
-			car4.body.x = car.body.x + 1500;
-			car4.body.y += 1000;
-			car4.body.velocity.y -= 400;
+			car4.body.x = car.body.x + 1500 + ( 100 * seventh +1);
+			third +=1;
+			seventh+=1;
+			if (third = 3){
+				car4.body.y += 1000;
+				car4.body.velocity.y -= 400;
+			}
+			if (seventh == 7){
+				car4.kill();
+				}
 			carswitch = false;
 			}
 		if (car.body.x > car5.body.x + 1500){
 		car5.loadTexture('carsprite2');
-			car5.body.x = car5.body.x + 2000;
-			car5.body.y -=200;
-			car5.body.velocity.y += 300;
+			car5.body.x = car5.body.x + 2500;
+			car5.body.y -=250;
+			car5.body.velocity.y += 200;
+			if (seventh == 7){
+				car5.kill();
+				}
 			}
 		
 		car.animations.play('drive');
