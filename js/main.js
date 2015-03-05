@@ -173,18 +173,18 @@ window.onload = function() {
 		//reuse cars
 		if (car.body.y < car2.body.y - 1500 || car.body.y > car2.body.y + 1500){
 			car2.loadTexture('carsprite2');
-			car2.body.y = car2.body.y - 2000;
+			car2.body.y = car.body.y - 2000;
 			
 			}
 		if (car.body.y > car3.body.y - 1500 || car.body.y > car3.body.y + 1500){
 		car3.loadTexture('carsprite2');
-			car3.body.y = car3.body.y - 2000 ;
+			car3.body.y = car.body.y - 2000 ;
 			
 			
 			}
 		if (car.body.y > car4.body.y + 1500 || car.body.y > car4.body.y + 1500){
 		car4.loadTexture('carsprite2');
-			car4.body.y = car4.body.y - 2000 ;
+			car4.body.y = car.body.y - 2000 ;
 			count +=1;
 			tenth+=1;
 			
@@ -193,7 +193,7 @@ window.onload = function() {
 			}
 		if (car.body.y > car5.body.y + 1500 || car.body.y > car5.body.y + 1500){
 		car5.loadTexture('carsprite2');
-			car5.body.y = car5.body.y - 2000;
+			car5.body.y = car.body.y - 2000;
 			
 			
 			}
