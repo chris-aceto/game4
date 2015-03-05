@@ -67,7 +67,8 @@ window.onload = function() {
         game.physics.enable( car, Phaser.Physics.ARCADE );
 		
 		car.animations.add('fly', [0,1,2],7,true);
-		car.animations.add('boost',[3,4],7);
+		car.animations.add('boost',[3,4],7, true);
+		car.animations.add('boost2',[4],7, true);
 		
 		
 		// creating npc cars
@@ -181,7 +182,7 @@ window.onload = function() {
 			}
 		if (car.body.y > car3.body.y - 1500){
 		car3.loadTexture('carsprite2');
-			car3.body.y = car.body.y - 1500 + ( 75 * tenth +1);;
+			car3.body.y = car.body.y - 1500 + ( 75 * tenth +1);
 			car3.body.velocity.y += 100;
 			
 			if (tenth == 10){
@@ -295,8 +296,12 @@ window.onload = function() {
 		doublejump = true;
     }
 		if (cooldown != 0){
-			if(cooldown == 100 || cooldown == 45){
+			
+			if (car.body.velocity.y < -2000){
 				car.animations.play('boost');
+				}
+			else{
+				car.animations.play('boost2');
 				}
 			cooldown -= 1;
 			if (cooldown < 10){
