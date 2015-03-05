@@ -173,14 +173,14 @@ window.onload = function() {
 			car5.kill();
 			}
 		//reuse cars
-		if (car.body.y < car2.body.y - 1500){
+		if (car.body.y < car2.body.y - 1500 || car.body.y > car2.body.y + 1500){
 			car2.loadTexture('carsprite2');
 			car2.body.y = car.body.y - 1500;
 			if (tenth == 10){
 				car2.kill();
 				}
 			}
-		if (car.body.y > car3.body.y - 1500){
+		if (car.body.y > car3.body.y - 1500 || car.body.y > car3.body.y + 1500){
 		car3.loadTexture('carsprite2');
 			car3.body.y = car.body.y - 1500 + ( 75 * tenth +1);
 			car3.body.velocity.y += 50;
@@ -189,7 +189,7 @@ window.onload = function() {
 				car3.kill();
 				}
 			}
-		if (car.body.y > car4.body.y + 1500){
+		if (car.body.y > car4.body.y + 1500 || car.body.y > car4.body.y + 1500){
 		car4.loadTexture('carsprite2');
 			car4.body.y = car.body.y - 1500 + ( 50 * tenth +1);
 			count +=1;
@@ -200,7 +200,7 @@ window.onload = function() {
 				}
 			
 			}
-		if (car.body.y > car5.body.y + 1500){
+		if (car.body.y > car5.body.y + 1500 || car.body.y > car5.body.y + 1500){
 		car5.loadTexture('carsprite2');
 			car5.body.y = car5.body.y + 2000;
 			
