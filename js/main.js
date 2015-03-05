@@ -135,14 +135,14 @@ window.onload = function() {
 			}
 		game.camera.y = car.body.y - 550;
 		//controlling different speeds
-		car2.body.velocity.y = -250 * (tenth +1);
-		car3.body.velocity.y = -250 * (tenth +2);
-		car4.body.velocity.y = -250 * (tenth +3);
-		car5.body.velocity.y = -250 * (tenth +2);
-		car2.body.velocity.x = 150 * (tenth +1);
-		car3.body.velocity.x = -150 * (tenth +1);
-		car4.body.velocity.x = 150 * (tenth +1);
-		car5.body.velocity.x = -170 * (tenth +1);
+		car2.body.velocity.y = -150 * (tenth +1);
+		car3.body.velocity.y = -150 * (tenth +1);
+		car4.body.velocity.y = -150 * (tenth +1);
+		car5.body.velocity.y = -150 * (tenth +1);
+		car2.body.velocity.x = 75 * (tenth +1);
+		car3.body.velocity.x = -75 * (tenth +1);
+		car4.body.velocity.x = 75 * (tenth +1);
+		car5.body.velocity.x = -75 * (tenth +1);
 		
 		// wall scrolling
 		if ( car2.body.x > 900){
