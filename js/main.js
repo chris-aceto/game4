@@ -72,14 +72,14 @@ window.onload = function() {
 		
 		
 		// creating npc cars
-		car2 = game.add.sprite( car.body.x - 1000, 50000, 'carsprite2' );
+		car2 = game.add.sprite( car.body.x - 1000, 50000, 'carsprite' );
 		game.physics.enable( car2, Phaser.Physics.ARCADE );
 		car2.body.collideWorldBounds = true;
 		car2.anchor.setTo( 0, -2 );
 		car2.width = 200;
 		car2.height = 100;
 		
-		car3 = game.add.sprite( car.body.x + 1000, 50000, 'carsprite2' );
+		car3 = game.add.sprite( car.body.x + 1000, 50000, 'carsprite' );
 		game.physics.enable( car3, Phaser.Physics.ARCADE );
 		car3.body.collideWorldBounds = true;
 		car3.anchor.setTo( 0, -2 );
