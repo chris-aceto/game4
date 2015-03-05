@@ -2,7 +2,7 @@ window.onload = function() {
     
     "use strict";
     
-    var game = new Phaser.Game( 1200, 400, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update } );
+    var game = new Phaser.Game( 1200, 800, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update } );
     
     function preload() {
         // Load an image and call it 'carsprite'.
@@ -17,6 +17,7 @@ window.onload = function() {
 		game.load.audio('victory', 'assets/victory.ogg');
 		game.load.audio('lose', 'assets/lose.ogg');
 		game.load.image( 'hired', 'assets/BGcarwin.png');
+		game.load.spritesheet('cats', 'assets/catsheet3.png', 362, 400);
     }
     
 	var win;
@@ -45,15 +46,16 @@ window.onload = function() {
 	var bg;
 	var road;
 	var lose;
+	var cooldown = 0;
     function create() {
-		bg = game.add.tileSprite(0, 0, 1200, 400, 'bg');
+		bg = game.add.tileSprite(0, 0, 1200, 800, 'bg');
 		bg.fixedToCamera=true;
-		road = game.add.tileSprite(0, 0, 100600, 400, 'road');
-		game.world.setBounds(0, 0, 100600, 400);
+		road = game.add.tileSprite(0, 0, 1200, 14000, 'road');
+		game.world.setBounds(0, 0, 1200, 14000);
         // Create a sprite at the center of the screen using the 'carsprite' image.
-        car = game.add.sprite( game.world.centerX - 3000, game.world.centerY, 'carsprite' );
-		car.width = 200;
-		car.height = 100;
+        car = game.add.sprite( game.world.centerX , 7000, 'cats' );
+		car.width = 170;
+		car.height = 170;
         // so it will be truly centered.
 		//car.animations.add('carsprite2', true);
 		
@@ -62,7 +64,8 @@ window.onload = function() {
         // Turn on the arcade physics engine for this sprite.
         game.physics.enable( car, Phaser.Physics.ARCADE );
 		
-		car.animations.add('drive', [0,1,2],7,true);
+		car.animations.add('fly', [0,1,2],7,true);
+		car.animations.add('boost',[3]);
 		
 		
 		// creating npc cars
@@ -114,6 +117,7 @@ window.onload = function() {
 		music.play();
 		cursors = game.input.keyboard.createCursorKeys();
 		jump = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+		//game.camera.follow(car);
     }
     
     function update() {
@@ -123,32 +127,16 @@ window.onload = function() {
 			car.body.y = 20;
 			}
 		
-		game.camera.x = car.body.x - 150;
+		game.camera.y = car.body.y - 550;
+		if (car.onFloor){
+			car.kill();}
 		//controlling different speeds
-		car2.body.velocity.x = 50 * (tenth +1);
+		/*car2.body.velocity.x = 50 * (tenth +1);
 		car3.body.velocity.x = 50 * (tenth +2);
 		car4.body.velocity.x = 50 * (tenth +3);
-		car5.body.velocity.x = 70 * (tenth +4);
+		car5.body.velocity.x = 70 * (tenth +4);*/
 		
-		//flying car physics
-		if (!car5.body.onFloor()){
-			car5.body.velocity.y = 120;
-			if(game.physics.arcade.collide(car5,car)){
-				car5.body.velocity.y = -910;
-				car5.body.velocity.x = 310;
-				}
-			}
-		if (!car4.body.onFloor()){
-			if(game.physics.arcade.collide(car4,car)){
-				car4.body.velocity.y = -910;
-				car4.body.velocity.x = 310;
-				}
-			}
 		
-		if (!carswitch){
-			car4.body.velocity.y = -100;
-			
-			}
 		//reuse cars
 		if (car.body.x > car2.body.x + 1500){
 			car2.loadTexture('carsprite2');
@@ -201,7 +189,7 @@ window.onload = function() {
 				}
 			}
 		
-		car.animations.play('drive');
+		car.animations.play('fly');
        
 		game.physics.arcade.collide(car2, car);
 		game.physics.arcade.collide(car3, car);
@@ -210,15 +198,7 @@ window.onload = function() {
 		game.physics.arcade.collide(car3, car4);
 		game.physics.arcade.collide(car5, car4);
 		
-		if (car.body.velocity.y == 500)
-			{
-				height = false;
-				car.body.velocity.y = 0;
-			}
-		if (height){
-			car.body.velocity.y += 25;
-			
-		}
+		
 		// checking if car is moving left or right, and if the player wants to accellerate
 		if (car.body.velocity.x < 0 && cursors.left.isDown && car.body.velocity.x > -1800){
 			car.body.velocity.x *= 1.1;
@@ -284,21 +264,30 @@ window.onload = function() {
 			car.body.y -=10;
 			}
 			// starting a jump
-		if (jump.isDown && car.body.onFloor() || jump.isDown && car.body.touching.down)
-    {
-        car.body.velocity.y = -750;
-		doublejump = true;
+		if (jump.isDown && cooldown == 0){ //&& car.body.onFloor() || jump.isDown && car.body.touching.down){
+        car.body.velocity.y = -550;
+		if(!vroom.isPlaying){
 		vroom.play();
+		}
+		doublejump = true;
     }
-		if (doublejump && cursors.up.isDown){
-			car.body.velocity.y = -550;
+		if (cooldown != 0){
+			car.animations.play('boost');
+			cooldown -= 1;
+			if (cooldown < 20){
+				car.body.velocity.y = -550;
+				}
+			}
+		else{
+			car.animations.play('fly');
+			}
+		if (doublejump && cursors.up.isDown && cooldown == 0){
+			car.body.velocity.y *= 3;
+			car.body.velocity.x *= 1.3;
+			cooldown = 45;
 			doublejump = false;
 			vroom.play();
 		}
-		if (!car.body.onFloor()){
-			car.body.velocity.y +=1;
-			if (car.body.velocity.y > 0){
-			car.body.velocity.y *= 1.1;}
-			}
+		
 		}
-    }
+}
