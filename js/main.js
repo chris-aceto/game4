@@ -126,6 +126,10 @@ window.onload = function() {
     
     function update() {
 	//	bug fix
+		if (tenth > 8){
+			tenth = 8;
+		
+		}
 		carOn = false;
 		if(car.body.y < 10){
 			car.body.y = 20;
@@ -134,8 +138,6 @@ window.onload = function() {
 			win.play();
 			}
 		game.camera.y = car.body.y - 550;
-		if (car.onFloor){
-			car.kill();}
 		//controlling different speeds
 		car2.body.velocity.y = -250 * (tenth +1);
 		car3.body.velocity.y = -250 * (tenth +2);
@@ -176,18 +178,14 @@ window.onload = function() {
 		if (car.body.y < car2.body.y - 1500 || car.body.y > car2.body.y + 1500){
 			car2.loadTexture('carsprite2');
 			car2.body.y = car.body.y - 1500;
-			if (tenth == 10){
-				car2.kill();
-				}
+			
 			}
 		if (car.body.y > car3.body.y - 1500 || car.body.y > car3.body.y + 1500){
 		car3.loadTexture('carsprite2');
 			car3.body.y = car.body.y - 1500 + ( 75 * tenth +1);
 			car3.body.velocity.y += 50;
 			
-			if (tenth == 10){
-				car3.kill();
-				}
+			
 			}
 		if (car.body.y > car4.body.y + 1500 || car.body.y > car4.body.y + 1500){
 		car4.loadTexture('carsprite2');
@@ -195,20 +193,14 @@ window.onload = function() {
 			count +=1;
 			tenth+=1;
 			
-			if (tenth == 10){
-				car4.kill();
-				}
+			
 			
 			}
 		if (car.body.y > car5.body.y + 1500 || car.body.y > car5.body.y + 1500){
 		car5.loadTexture('carsprite2');
 			car5.body.y = car5.body.y + 2000;
 			
-			if (tenth == 10){
-				car5.kill();
-				//win condition
-				win.play();
-				}
+			
 			}
 		
 		car.animations.play('fly');
