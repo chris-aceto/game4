@@ -172,19 +172,19 @@ window.onload = function() {
 			}
 		//reuse cars
 		if (car.body.y < car2.body.y - 2500 || car.body.y > car2.body.y + 1500){
-			car2.loadTexture('carsprite2');
-			car2.body.y = car.body.y - 700;
+			car2.loadTexture('carsprite');
+			car2.body.y = car.body.y - 900;
 			
 			}
 		if (car.body.y < car3.body.y - 2500 || car.body.y > car3.body.y + 1500){
-		car3.loadTexture('carsprite2');
+		car3.loadTexture('carsprite');
 			car3.body.y = car.body.y - 700 ;
 			
 			
 			}
 		if (car.body.y < car4.body.y - 2500 || car.body.y > car4.body.y + 1500){
 		car4.loadTexture('carsprite2');
-			car4.body.y = car.body.y- 700 ;
+			car4.body.y = car.body.y- 800 ;
 			count +=1;
 			tenth+=1;
 			
