@@ -137,10 +137,10 @@ window.onload = function() {
 		if (car.onFloor){
 			car.kill();}
 		//controlling different speeds
-		car2.body.velocity.y = -500 * (tenth +1);
-		car3.body.velocity.y = -500 * (tenth +2);
-		car4.body.velocity.y = -500 * (tenth +3);
-		car5.body.velocity.y = -700 * (tenth +4);
+		car2.body.velocity.y = -250 * (tenth +1);
+		car3.body.velocity.y = -250 * (tenth +2);
+		car4.body.velocity.y = -350 * (tenth +3);
+		car5.body.velocity.y = -350 * (tenth +4);
 		car2.body.velocity.x = 250 * (tenth +1);
 		car3.body.velocity.x = -250 * (tenth +2);
 		car4.body.velocity.x = 250 * (tenth +3);
@@ -183,7 +183,7 @@ window.onload = function() {
 		if (car.body.y > car3.body.y - 1500){
 		car3.loadTexture('carsprite2');
 			car3.body.y = car.body.y - 1500 + ( 75 * tenth +1);
-			car3.body.velocity.y += 100;
+			car3.body.velocity.y += 50;
 			
 			if (tenth == 10){
 				car3.kill();
