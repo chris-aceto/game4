@@ -126,8 +126,8 @@ window.onload = function() {
     
     function update() {
 	//	bug fix
-		if (tenth > 8){
-			tenth = 8;
+		if (tenth > 4){
+			tenth = 4;
 		
 		}
 		carOn = false;
