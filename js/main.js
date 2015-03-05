@@ -140,9 +140,9 @@ window.onload = function() {
 		car4.body.velocity.y = -250 * (tenth +3);
 		car5.body.velocity.y = -250 * (tenth +2);
 		car2.body.velocity.x = 150 * (tenth +1);
-		car3.body.velocity.x = -150 * (tenth +2);
-		car4.body.velocity.x = 150 * (tenth +2);
-		car5.body.velocity.x = -170 * (tenth +2);
+		car3.body.velocity.x = -150 * (tenth +1);
+		car4.body.velocity.x = 150 * (tenth +1);
+		car5.body.velocity.x = -170 * (tenth +1);
 		
 		// wall scrolling
 		if ( car2.body.x > 900){
@@ -171,18 +171,18 @@ window.onload = function() {
 			car5.kill();
 			}
 		//reuse cars
-		if (car.body.y < car2.body.y - 1500 || car.body.y > car2.body.y + 1500){
+		if (car.body.y < car2.body.y - 2500 || car.body.y > car2.body.y + 1500){
 			car2.loadTexture('carsprite2');
 			car2.body.y = car.body.y - 700;
 			
 			}
-		if (car.body.y < car3.body.y - 1500 || car.body.y > car3.body.y + 1500){
+		if (car.body.y < car3.body.y - 2500 || car.body.y > car3.body.y + 1500){
 		car3.loadTexture('carsprite2');
 			car3.body.y = car.body.y - 700 ;
 			
 			
 			}
-		if (car.body.y < car4.body.y + 1500 || car.body.y > car4.body.y + 1500){
+		if (car.body.y < car4.body.y + 2500 || car.body.y > car4.body.y + 1500){
 		car4.loadTexture('carsprite2');
 			car4.body.y = car.body.y- 700 ;
 			count +=1;
@@ -191,7 +191,7 @@ window.onload = function() {
 			
 			
 			}
-		if (car.body.y < car5.body.y + 1500 || car.body.y > car5.body.y + 1500){
+		if (car.body.y < car5.body.y + 2500 || car.body.y > car5.body.y + 1500){
 		car5.loadTexture('carsprite2');
 			car5.body.y = car.body.y - 700;
 			
