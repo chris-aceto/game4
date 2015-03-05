@@ -86,7 +86,7 @@ window.onload = function() {
 		car3.width = 200;
 		car3.height = 100;
 		
-		car4 = game.add.sprite( car.body.x + 500, 50000, 'carsprite2' );
+		car4 = game.add.sprite( car.body.x + 500, 50000, 'carsprite' );
 		game.physics.enable( car4, Phaser.Physics.ARCADE );
 		car4.body.collideWorldBounds = true;
 		car4.anchor.setTo( 0, -2 );
