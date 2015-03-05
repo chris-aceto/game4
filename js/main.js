@@ -204,8 +204,6 @@ window.onload = function() {
 		game.physics.arcade.collide(car3, car);
 		game.physics.arcade.collide(car5, car);
 		game.physics.arcade.collide(car4, car);
-		game.physics.arcade.collide(car3, car4);
-		game.physics.arcade.collide(car5, car4);
 		
 		
 		// checking if car is moving left or right, and if the player wants to accellerate
