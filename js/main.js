@@ -137,8 +137,8 @@ window.onload = function() {
 		//controlling different speeds
 		car2.body.velocity.y = -150 * (tenth +1);
 		car3.body.velocity.y = -150 * (tenth +1);
-		car4.body.velocity.y = -150 * (tenth +1);
-		car5.body.velocity.y = -150 * (tenth +1);
+		car4.body.velocity.y = -170 * (tenth +1);
+		car5.body.velocity.y = -170 * (tenth +1);
 		car2.body.velocity.x = 95 * (tenth +1);
 		car3.body.velocity.x = -75 * (tenth +1);
 		car4.body.velocity.x = 75 * (tenth +1);
@@ -173,12 +173,12 @@ window.onload = function() {
 		//reuse cars
 		if (car.body.y < car2.body.y - 2500 || car.body.y > car2.body.y + 1500){
 			car2.loadTexture('carsprite');
-			car2.body.y = car.body.y - 900;
+			car2.body.y = car.body.y - 600;
 			
 			}
 		if (car.body.y < car3.body.y - 2500 || car.body.y > car3.body.y + 1500){
 		car3.loadTexture('carsprite');
-			car3.body.y = car.body.y - 700 ;
+			car3.body.y = car.body.y - 600 ;
 			
 			
 			}
@@ -193,7 +193,7 @@ window.onload = function() {
 			}
 		if (car.body.y < car5.body.y - 2500 || car.body.y > car5.body.y + 1500){
 		car5.loadTexture('carsprite2');
-			car5.body.y = car.body.y - 700;
+			car5.body.y = car.body.y - 900;
 			
 			
 			}
