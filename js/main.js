@@ -173,7 +173,7 @@ window.onload = function() {
 		//reuse cars
 		if (car.body.y < car2.body.y - 1500 || car.body.y > car2.body.y + 1500){
 			car2.loadTexture('carsprite2');
-			car2.body.y = car.body.y - 1000;
+			car2.body.y = car.body.y;// - 1000;
 			
 			}
 		if (car.body.y > car3.body.y - 1500 || car.body.y > car3.body.y + 1500){
