@@ -139,8 +139,8 @@ window.onload = function() {
 		//controlling different speeds
 		car2.body.velocity.y = -250 * (tenth +1);
 		car3.body.velocity.y = -250 * (tenth +2);
-		car4.body.velocity.y = -350 * (tenth +3);
-		car5.body.velocity.y = -350 * (tenth +4);
+		car4.body.velocity.y = -250 * (tenth +3);
+		car5.body.velocity.y = -250 * (tenth +4);
 		car2.body.velocity.x = 250 * (tenth +1);
 		car3.body.velocity.x = -250 * (tenth +2);
 		car4.body.velocity.x = 250 * (tenth +3);
@@ -191,7 +191,7 @@ window.onload = function() {
 			}
 		if (car.body.y > car4.body.y + 1500){
 		car4.loadTexture('carsprite2');
-			car4.body.y = car.body.y + 1500 + ( 50 * tenth +1);
+			car4.body.y = car.body.y - 1500 + ( 50 * tenth +1);
 			count +=1;
 			tenth+=1;
 			
@@ -208,8 +208,6 @@ window.onload = function() {
 				car5.kill();
 				//win condition
 				win.play();
-				//bg = game.add.sprite(0, 0, 'hired');
-				game.camera.follow(bg);
 				}
 			}
 		
