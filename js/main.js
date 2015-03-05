@@ -143,10 +143,10 @@ window.onload = function() {
 		car3.body.velocity.y = -250 * (tenth +2);
 		car4.body.velocity.y = -250 * (tenth +3);
 		car5.body.velocity.y = -250 * (tenth +4);
-		car2.body.velocity.x = 250 * (tenth +1);
-		car3.body.velocity.x = -250 * (tenth +2);
-		car4.body.velocity.x = 250 * (tenth +3);
-		car5.body.velocity.x = -270 * (tenth +4);
+		car2.body.velocity.x = 150 * (tenth +1);
+		car3.body.velocity.x = -150 * (tenth +2);
+		car4.body.velocity.x = 150 * (tenth +3);
+		car5.body.velocity.x = -170 * (tenth +4);
 		
 		// wall scrolling
 		if ( car2.body.x > 900){
